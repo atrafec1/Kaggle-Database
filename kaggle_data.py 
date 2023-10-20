@@ -1,0 +1,10 @@
+import pandas as pd
+import sqlite3
+
+csv_file_path = 'fastfood_calories.csv'
+database = 'kaggle_data.db'
+conn = sqlite3.connect(database)
+df = pd.read_csv(csv_file_path)
+df.to_sql('fastfood_items', conn, if_exists='replace', index=False)
+
+conn.close()
